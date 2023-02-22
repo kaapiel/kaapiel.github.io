@@ -3,6 +3,7 @@ from flask import Flask, request
 from brain.perfume_brain import PerfumeBrain
 
 app = Flask(__name__)
+app.run(host="0.0.0.0")
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 
