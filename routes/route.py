@@ -2,6 +2,7 @@ from flask import Flask, request
 from brain.perfume_brain import PerfumeBrain
 
 app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 
 @app.route('/perfumes')

@@ -11,7 +11,7 @@ class PerfumeBrain:
     @staticmethod
     def get_recommendation(input_data):
         # Load the perfumes.json file
-        with open('../json/perfumes.json', 'r') as f:
+        with open('./json/perfumes.json', 'r') as f:
             data = json.load(f)
 
         # Extract the perfume names and their notes and accords
@@ -58,17 +58,17 @@ class PerfumeBrain:
 
     @staticmethod
     def get_all_perfumes():
-        with open('../json/perfumes.json') as f:
+        with open('./json/perfumes.json') as f:
             return json.load(f)
 
     @staticmethod
     def get_all_notes():
-        with open('../json/notes.json') as f:
+        with open('./json/notes.json') as f:
             return json.load(f)
 
     @staticmethod
     def get_notes_by_category(note_type):
-        with open('../json/notes.json') as f:
+        with open('./json/notes.json') as f:
             notes = json.load(f)
             for note in notes['perfume_notes']:
                 if note['name'] == note_type:
@@ -78,7 +78,7 @@ class PerfumeBrain:
 
     @staticmethod
     def get_notes_categories():
-        with open('../json/notes.json') as f:
+        with open('./json/notes.json') as f:
             notes = json.load(f)
 
             categories = []
