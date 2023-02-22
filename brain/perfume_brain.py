@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import random
 from collections import OrderedDict
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -86,3 +87,10 @@ class PerfumeBrain:
                 categories.append(category['name'])
 
             return categories
+
+    @staticmethod
+    def get_random_perfume():
+        # Load the perfumes.json file
+        with open('./json/perfumes.json', 'r') as f:
+            data = json.load(f)
+        return data['perfumes'][random.randint(0, len(data['perfumes']))]

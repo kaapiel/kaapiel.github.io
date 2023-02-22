@@ -15,6 +15,11 @@ def recommendation():
     return PerfumeBrain().get_recommendation(request.get_json(force=True))
 
 
+@app.route('/perfumes/random')
+def random():
+    return PerfumeBrain().get_random_perfume()
+
+
 @app.route('/notes')
 def notes():
     return PerfumeBrain().get_all_notes()
