@@ -1,9 +1,13 @@
+import os
 from flask import Flask, request
 
 from brain.perfume_brain import PerfumeBrain
 
 app = Flask(__name__)
-app.run(host="0.0.0.0")
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 
