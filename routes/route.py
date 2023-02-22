@@ -5,7 +5,9 @@ from brain.perfume_brain import PerfumeBrain
 
 app = Flask(__name__)
 os.environ.setdefault('PORT', '5000')
-app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+if __name__ == "__main__":
+    print("Running in production...")
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 
