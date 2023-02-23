@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import random
+import numpy as np
 from collections import OrderedDict
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -10,7 +11,9 @@ class PerfumeBrain:
 
     # This is the brain of our product. It can predict a perfume based on accords or notes provided.
     @staticmethod
-    def get_recommendation(input_data):
+    def get_recommendations(input_data):
+        recommendations = []
+
         # Load the perfumes.json file
         with open('./json/perfumes.json', 'r') as f:
             data = json.load(f)
@@ -51,11 +54,18 @@ class PerfumeBrain:
         #     "base_notes": ["leather"]
         # }
 
-        for perfume in data['perfumes']:
-            if perfume['name'] == y_pred[0]:
-                return perfume
-        else:
-            return {}
+        probas = clf.predict_proba(x_input)
+        indices = np.argsort(-probas)
+        labels = clf.classes_
+
+        # Get the 10 top predictions based on their probabilities
+        for i in range(10):
+            for perfume in data['perfumes']:
+                if perfume['name'] == f"{labels[indices[0, i]]}":
+                    print(perfume['name'])
+                    recommendations.append(perfume)
+
+        return recommendations
 
     @staticmethod
     def get_all_perfumes():
