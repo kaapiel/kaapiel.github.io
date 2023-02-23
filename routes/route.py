@@ -10,7 +10,7 @@ def perfumes():
     return PerfumeBrain().get_all_perfumes()
 
 
-@app.route('/perfumes/recommendation', methods=['POST'])
+@app.route('/perfumes/recommendations', methods=['POST'])
 def recommendation():
     return PerfumeBrain().get_recommendations(request.get_json(force=True))
 
